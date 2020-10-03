@@ -1,0 +1,30 @@
+#!/usr/bin/python
+import sys
+import csv
+
+def mapper():
+    reader = csv.reader(sys.stdin, delimiter='\t')
+    writer = csv.writer(sys.stdout, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
+
+    for line in reader:
+
+        # aquí deben completar el código
+            
+        writer.writerow(line)
+
+test_text = """\"\"\t\"\"\t\"\"\t\"\"\t\"Esta es una oracion\"\t\"\"
+\"\"\t\"\"\t\"\"\t\"\"\t\"tambien es una oracion!\"\t\"\"
+\"\"\t\"\"\t\"\"\t\"\"\t\"Aqui!\n hay dos oraciones!\"\t\"\"
+\"\"\t\"\"\t\"\"\t\"\"\t\"uno. dos! tres?\"\t\"\"
+\"\"\t\"\"\t\"\"\t\"\"\t\"un periodo. dos oraciones\"\t\"\"
+\"\"\t\"\"\t\"\"\t\"\"\t\"Tres\nlinea, dos\n\"\t\"\"
+"""
+
+def main():
+    import StringIO
+    sys.stdin = StringIO.StringIO(test_text)
+    mapper()
+    sys.stdin = sys.__stdin__
+
+if __name__ == "__main__":
+    main()
